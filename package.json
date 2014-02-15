@@ -1,0 +1,32 @@
+{
+  "name": "pluk",
+  "version": "0.0.1",
+  "description": "data.police.uk API wrapper",
+  "homepage": "https://github.com/padolsey/pluk",
+  "author": "James Padolsey <npm@padolsey.net> (http://james.padolsey.com)",
+  "contributors": [
+    "James Padolsey <james@padolsey.net>"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/padolsey/pluk.git"
+  },
+  "bugs:": "https://github.com/padolsey/pluk/issues",
+  "engines": {
+    "node": ">= v0.8.0"
+  },
+  "main": "src/pluk.js",
+  "devDependencies": {
+    "mocha": "~1.13.0",
+    "chai": "~1.8.0",
+    "chai-as-promised": "~4.0.0",
+    "mocha-as-promised": "~1.4.0"
+  },
+  "dependencies": {
+    "when": "~2.4.0",
+    "request": "~2.33.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  }
+}
