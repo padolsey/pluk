@@ -14,7 +14,7 @@ npm install pluk
 ```js
 var pluk = require('pluk');
 
-pluk.hood('Bank, London').info().then(function(data) {
+pluk.hood('Westminster, London').info().then(function(data) {
   console.log(data);
 }, function(err) {
   // err occurred

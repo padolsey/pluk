@@ -7,6 +7,9 @@ var pluk = module.exports = {
 	debug: false,
 	hood: function hood(search) {
 		return new Hood(search);
+	},
+	direct: function(path) {
+		return plgrab(path);
 	}
 };
 
@@ -25,7 +28,7 @@ function grab(url) {
 	return when.promise(function(resolve, reject, notify) {
 		request(url, function(err, response, body) {
 			if (err) reject(err);
-			else if (/^not found/i.test(body)) reject(body)
+			else if (response.statusCode != 200) reject(body)
 			else resolve(JSON.parse(body));
 		});
 	});
@@ -37,11 +40,19 @@ function plgrab(path) {
 
 function Hood(search) {
 	var t = this;
+	this.search = search;
 	this._hood = typeof search == 'string' ?
-		grab('http://maps.googleapis.com/maps/api/geocode/json?address=' + encodeURIComponent(search) + '&sensor=false').then(function(l) {
+		grab(
+			'http://maps.googleapis.com/maps/api/geocode/json?' + 
+				[
+					'address=' + encodeURIComponent(search),
+					'sensor=false',
+					'region=UK'
+				].join('&')
+		).then(function(l) {
 			return t._getByLatLng(l.results[0].geometry.location);
 		}) :
-		this._getByLatLng(search[0], search[1]);
+		this._getByLatLng({ lat: search[0], lng: search[1] });
 }
 
 Hood.prototype = {
@@ -71,9 +82,13 @@ Hood.prototype = {
 		});
 	},
 	_getByLatLng: function(loc) {
-		return grab('http://data.police.uk/api/locate-neighbourhood?q='+loc.lat+','+loc.lng).then(null, function(err) {
-			var e = new Error('Cannot locate neighbourhood @ ' + [loc.lat, loc.lng]);
+		var t = this;
+		var lat = loc.lat;
+		var lng = loc.lng;
+		return plgrab('locate-neighbourhood?q='+lat+','+lng).then(null, function(err) {
+			var e = new Error('Cannot locate neighbourhood @ ' + [lat, lng]);
 			e.detail = err;
+			e.search = t.search;
 			throw e;
 		});
 	}
