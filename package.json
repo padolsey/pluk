@@ -1,6 +1,6 @@
 {
   "name": "pluk",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "data.police.uk API wrapper",
   "homepage": "https://github.com/padolsey/pluk",
   "author": "James Padolsey <npm@padolsey.net> (http://james.padolsey.com)",
