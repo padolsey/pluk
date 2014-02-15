@@ -23,26 +23,31 @@ pluk.hood('Westminster, London').info().then(function(data) {
 
 ```js
 // Logged:
-{
-  contact_details:
-   { telephone: '020 7601 2452',
-     email: 'community@cityoflondon.police.uk' },
-  name: 'Community Policing',
-  links: [],
-  centre: { latitude: '51.5151', longitude: '-0.0934' },
+{ contact_details:
+   { mobile: '07810 857227',
+     email: 'VincentSquare.snt@met.police.uk',
+     telephone: '0208 721 2876' },
+  name: 'Vincent Square and St James South',
+  links:
+   [ { url: 'http://www.met.police.uk/teams/westminster/vincentsquareandstjamessouth/',
+       description: 'Further local information on Vincent Square and St James South Safer Neighbourhoods Team',
+       title: 'Vincent Square and St James South Saferneighbourhoods Team' },
+     { url: 'http://maps.met.police.uk/index.php?areacode=00BK19N',
+       description: 'Information about crime in your local area.',
+       title: 'Local Crime' } ],
+  centre: { latitude: '51.4945', longitude: '-0.132436' },
   locations:
-   [ { name: 'Snow Hill Police Station',
+   [ { name: 'Vincent Square and St James South Safer Neighbourhoods Team',
        longitude: null,
-       postcode: 'EC1A 2DP',
-       address: '5 Snow Hill\nLondon',
+       postcode: 'SW1 9SX',
+       address: 'Belgravia Police Station, 202-206 Buckingham Palace Road, Belgravia, London',
        latitude: null,
        type: 'station',
        description: null } ],
-  url_force: 'http://www.cityoflondon.police.uk/community-policing/',
-  population: '208596',
-  id: 'cp',
-  description: '<p>City of London Police Community Policing</p>'
-}
+  url_force: 'http://www.met.police.uk/teams/westminster/vincentsquareandstjamessouth/',
+  population: '13937',
+  id: '00BK19N',
+  description: 'Welcome to the Vincent Square and St James South...' }
 ```
 
 ## Current API
