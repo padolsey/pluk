@@ -15,6 +15,7 @@ npm install pluk
 var pluk = require('pluk');
 
 pluk.hood('Bank, London').info().then(function(data) {
+
   data; /* =>
   {
     contact_details:
@@ -36,18 +37,21 @@ pluk.hood('Bank, London').info().then(function(data) {
     id: 'cp',
     description: '<p>City of London Police Community Policing</p>'
   }*/
+  
 }, function(err) {
   // err occurred
 });
 ```
 
-## Current methods
+## Current API
 
- * `info()`
- * `events()`
- * `priorities()`
- * `boundary()`
- * `people()`
+ * `hood(ADDR | POST-CODE | [LAT, LNG])` - returns methods:
+  * *Each method returns a when.js promise*
+  * `info()`
+  * `events()`
+  * `priorities()`
+  * `boundary()`
+  * `people()`
 
 See http://data.police.uk/docs/ for additional docs.
 
